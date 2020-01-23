@@ -7,7 +7,7 @@ const Entry = new Schema({
         type: String,
         required: true
     },
-    create_date: {
+    created_date: {
         type: Date,
         required: true
     },

@@ -3,8 +3,11 @@ const router = express.Router();
 
 const {
     getEntries,
-    getEntry
-} = require("../controllers/entries_controller");
+    getEntry,
+    makeEntry,
+    removeEntry,
+    changeEntry
+} = require("../controllers/entriesController");
 
 // GET on /entries
 router.get("/", getEntries);
@@ -13,9 +16,12 @@ router.get("/", getEntries);
 router.get("/:id", getEntry);
 
 // POST on /entries
+router.post("/", makeEntry);
 
 //  DELETE on /entries/:id
+router.delete("/:id", removeEntry);
 
 // PUT on /entries/:id
+router.put("/:id", changeEntry);
 
 module.exports = router

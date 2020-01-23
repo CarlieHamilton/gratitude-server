@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { mongooseConnect } = require('./config/mongoose-connection');
+const { mongooseConnect } = require('./config/mongooseConnection');
 
 // Routes
-const entriesRouter = require("./routes/entries_routes");
+const entriesRouter = require("./routes/entriesRoutes");
 
 // Environment Variables
 if (process.env.NODE_ENV !== 'production' ){
@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 
 // Database connection
 mongooseConnect(process.env.NODE_ENV);
+
+// // seed the database
+// const { seedEntries } = require('./data/entrySeeds');
+// seedEntries();
 
 // Defining the routes
 app.get("/", (req, res) => {

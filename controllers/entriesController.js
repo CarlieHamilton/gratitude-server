@@ -4,7 +4,7 @@ const {
     addEntry,
     deleteEntry,
     updateEntry
-} = require('../utils/entries_utils');
+} = require('../utils/entriesUtils');
 
 const getEntries = (req, res) => {
     getAllEntries(req)
@@ -66,7 +66,7 @@ const changeEntry = (req, res) => {
             });
         }
         res.status(200);
-        res.send(post);
+        res.send(entry);
     });
 };
 
