@@ -66,7 +66,7 @@ const changeEntry = (req, res) => {
             });
         }
         res.status(200);
-        res.send(post);
+        res.send(entry);
     });
 };
 

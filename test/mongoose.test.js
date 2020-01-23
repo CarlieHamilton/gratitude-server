@@ -6,7 +6,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 const { app } = require('../app');
-const { mongoose } = require('../config/mongoose-connection');
+const { mongoose } = require('../config/mongooseConnection');
 
 describe('Mongoose connection tests', () => {
     describe('test vs dev database connection', () => {

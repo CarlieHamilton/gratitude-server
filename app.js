@@ -20,6 +20,10 @@ app.use(bodyParser.json());
 // Database connection
 mongooseConnect(process.env.NODE_ENV);
 
+// // seed the database
+// const { seedEntries } = require('./data/entrySeeds');
+// seedEntries();
+
 // Defining the routes
 app.get("/", (req, res) => {
     console.log("get on "/"");

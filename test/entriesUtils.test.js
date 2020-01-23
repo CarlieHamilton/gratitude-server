@@ -135,7 +135,7 @@ const setupMockEntry = () => {
     let date = Date.now();
     let testEntry = new Entry({
         content: "Today I am grateful for 80s pop culture references",
-        create_date: date,
+        created_date: date,
         modified_date: date,
         username: "MartyMcFly"
     });
