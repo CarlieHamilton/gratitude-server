@@ -28,10 +28,10 @@ The following routes are defined for this server:
 
 Gratitude journal entries
 
+* DELETE entries/:id
 * GET entries/
 * GET entries/:id
 * POST entries/
-* DELETE entries/:id
 * PUT entries/:id
 
 
