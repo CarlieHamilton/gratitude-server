@@ -20,6 +20,21 @@ To run the server, use the code:
 npm start
 ```
 
+### Routes
+
+The following routes are defined for this server:
+
+#### Entries
+
+Gratitude journal entries
+
+* GET entries/
+* GET entries/:id
+* POST entries/
+* DELETE entries/:id
+* PUT entries/:id
+
+
 ### Tests
 
 The testing framework used for this backend is `Mocha`, with `Chai`.
