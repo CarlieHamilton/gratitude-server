@@ -4,7 +4,7 @@ const router = express.Router();
 const {
     getEntries,
     getEntry
-} = require("../controllers/entries_controller");
+} = require("../controllers/entriesController");
 
 // GET on /entries
 router.get("/", getEntries);

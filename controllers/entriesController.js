@@ -4,7 +4,7 @@ const {
     addEntry,
     deleteEntry,
     updateEntry
-} = require('../utils/entries_utils');
+} = require('../utils/entriesUtils');
 
 const getEntries = (req, res) => {
     getAllEntries(req)

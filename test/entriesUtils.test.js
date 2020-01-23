@@ -6,8 +6,8 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 const { app } = require('../app');
-const { mongoose } = require('../config/mongoose-connection');
-const utilities = require("../utils/entries_utils");
+const { mongoose } = require('../config/mongooseConnection');
+const utilities = require("../utils/entriesUtils");
 const Entry = require('../models/entry');
 
 let entryId = null;

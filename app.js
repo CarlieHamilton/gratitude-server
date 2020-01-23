@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { mongooseConnect } = require('./config/mongoose-connection');
+const { mongooseConnect } = require('./config/mongooseConnection');
 
 // Routes
-const entriesRouter = require("./routes/entries_routes");
+const entriesRouter = require("./routes/entriesRoutes");
 
 // Environment Variables
 if (process.env.NODE_ENV !== 'production' ){
