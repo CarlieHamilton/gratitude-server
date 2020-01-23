@@ -1,0 +1,29 @@
+{
+  "name": "gratitude-server",
+  "version": "1.0.0",
+  "description": "API for a gratitude journal",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueCodeThree/gratitude-server.git"
+  },
+  "author": "Carlie Hamilton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlueCodeThree/gratitude-server/issues"
+  },
+  "homepage": "https://github.com/BlueCodeThree/gratitude-server#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "expect": "^25.1.0",
+    "mocha": "^7.0.0",
+    "nodemon": "^2.0.2"
+  }
+}
