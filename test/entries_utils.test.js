@@ -99,6 +99,35 @@ describe('Entry Utility Tests', () => {
                 }
             })
         })
+    });
+
+    // deleteEntry
+    describe('deleteEntry', () => {
+        it('should delete the post specified', async () => {
+            await utilities.deleteEntry(entryId).exec();
+            await Entry.findById(entryId).exec((err, entry) => {
+                expect(entry).to.eq(null);
+            })
+        })
+    });
+
+    // updateEntry
+    describe('updateEntry', () => {
+        it('should update the entry', async () => {
+            const req = {
+                params: {
+                    id: entryId
+                },
+                body: {
+                    content: "Great Scott!",
+                    username: "MartyMcFly"
+                }
+            }
+
+            await utilities.updateEntry(req).exec((err, entry) => {
+                expect(entry.content).to.equal(req.body.content)
+            })
+        })
     })
 })
 
