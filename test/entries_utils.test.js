@@ -66,6 +66,39 @@ describe('Entry Utility Tests', () => {
                 expect(entry.username).to.equal('MartyMcFly')
             })
         })
+    });
+
+    // addEntry
+    describe('addEntry', () => {
+        it('should add an entry', async () => {
+            const req = {
+                body: {
+                    content: "Could you be anymore happy today?",
+                    username: "ChandlerBing",
+                }
+            }
+
+            await utilities.addEntry(req).save((err, entry) => {
+                expect(entry.content).to.equal(req.body.content);
+            });
+        });
+
+        it('should fail if a required field is missing', async () => {
+            const req = {
+                body: {
+                    content: "How you doin'?",
+                    username: ""
+                }
+            }
+
+            await utilities.addEntry(req).save((err, entry) => {
+                if (err) {
+                    expect(err.message).to.match(/validation/);
+                } else {
+                    expect(true).to.eq(false);
+                }
+            })
+        })
     })
 })
 
