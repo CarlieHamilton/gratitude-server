@@ -33,8 +33,40 @@ describe('Entry Utility Tests', () => {
         tearDownData().exec(() => done());
     });
 
-    describe('')
+    // getAllEntries
+    describe('getAllEntries', () => {
+        it('should get one post', async () => {
+            let req = {
+                query: {}
+            };
+            await utilities.getAllEntries(req).exec((err, entries) => {
+                expect(Object.keys(entries).length).to.equal(1);
+            });
+        });
 
+        it('the username of the first post should be MartyMcFly', async () => {
+            let req = {
+                query: {}
+            };
+            await utilities.getAllEntries(req).exec((err, entries )=> {
+                expect(entries[0].username).to.equal('MartyMcFly')
+            })
+        })
+    });
+
+    // getEntryById
+    describe('getEntryById', () => {
+        it('the username should be MartyMcFly', async () => {
+            let req = {
+                params: {
+                    id: entryId
+                }
+            }
+            await (await utilities.getEntryById(req)).execPopulate((err, entry) => {
+                expect(entry.username).to.equal('MartyMcFly')
+            })
+        })
+    })
 })
 
 const setupMockEntry = () => {
@@ -43,7 +75,7 @@ const setupMockEntry = () => {
         content: "Today I am grateful for 80s pop culture references",
         create_date: date,
         modified_date: date,
-        username: "Marty McFly"
+        username: "MartyMcFly"
     });
     return Entry.create(testEntry);
 }
