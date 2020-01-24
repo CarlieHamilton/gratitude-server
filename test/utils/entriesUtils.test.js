@@ -5,20 +5,29 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const { expect } = chai;
 
-const { app } = require('../app');
-const { mongoose } = require('../config/mongooseConnection');
-const utilities = require("../utils/entriesUtils");
-const Entry = require('../models/entry');
+const { mongoose } = require('../../config/mongooseConnection');
+const utilities = require("../../utils/entriesUtils");
+const Entry = require('../../models/entry');
+const {
+    setupMockEntry,
+    entryTearDownData
+} = require('../data/testMockData')
 
+// defining here to give it scope
 let entryId = null;
 
 describe('Entry Utility Tests', () => {
+
+    before((done) => {
+        mongoose.connection
+            .then(done());
+    })
 
     after((done) => {
         Entry.deleteMany({}, (err) => {
         })
             .then(() => {
-                mongoose.disconnect()
+                // mongoose.disconnect()
         })
         done();
     });
@@ -30,7 +39,7 @@ describe('Entry Utility Tests', () => {
     });
 
     afterEach((done) => {
-        tearDownData().exec(() => done());
+        entryTearDownData().exec(() => done());
     });
 
     // getAllEntries
@@ -130,18 +139,3 @@ describe('Entry Utility Tests', () => {
         })
     })
 })
-
-const setupMockEntry = () => {
-    let date = Date.now();
-    let testEntry = new Entry({
-        content: "Today I am grateful for 80s pop culture references",
-        created_date: date,
-        modified_date: date,
-        username: "MartyMcFly"
-    });
-    return Entry.create(testEntry);
-}
-
-const tearDownData = () => {
-    return Entry.deleteMany();
-}
