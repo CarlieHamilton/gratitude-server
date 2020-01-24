@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { mongooseConnect } = require('./config/mongooseConnection');
 
 // Routes
+const rootRouter = require("./routes/rootRoutes");
 const entriesRouter = require("./routes/entriesRoutes");
 
 // Environment Variables
@@ -25,10 +26,7 @@ mongooseConnect(process.env.NODE_ENV);
 // seedEntries();
 
 // Defining the routes
-app.get("/", (req, res) => {
-    console.log("get on "/"");
-    res.send("Got Gratitude?");
-})
+app.use("/", rootRouter);
 app.use("/entries", entriesRouter);
 
 // server listening
