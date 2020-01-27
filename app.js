@@ -1,7 +1,9 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { mongooseConnect } = require('./config/mongooseConnection');
+const { login, index } = require('./controllers/authController');
+const { checkToken } = require('./utils/authUtils')
 
 // Routes
 const rootRouter = require("./routes/rootRoutes");
@@ -16,7 +18,9 @@ const port = process.env.PORT || 3003;
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Database connection
 mongooseConnect(process.env.NODE_ENV);
@@ -26,8 +30,9 @@ mongooseConnect(process.env.NODE_ENV);
 // seedEntries();
 
 // Defining the routes
-app.use("/", rootRouter);
+app.get("/", checkToken, index);
 app.use("/entries", entriesRouter);
+app.post('/login', login);
 
 // server listening
 app.listen(port, () => {
