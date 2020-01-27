@@ -134,5 +134,17 @@ describe('Entry Routes Tests', () => {
                 })
             done();
         })
+
+        // this isn't working yet`
+        it('should return an error if an invalid id is given', (done) => {
+            chai.request(app)
+                .delete('/entries/' + 42)
+                .end((err, res) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
+            done();
+            })
     })
 })
