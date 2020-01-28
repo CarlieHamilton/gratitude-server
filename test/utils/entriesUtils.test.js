@@ -1,11 +1,14 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+const {
+    chai,
+    chaiHttp,
+    expect,
+    mongoose,
+    app
+} = require('../testConfig');
 chai.use(chaiHttp);
-const { expect } = chai;
 
-const { mongoose } = require('../../config/mongooseConnection');
 const utilities = require("../../utils/entriesUtils");
 const Entry = require('../../models/entry');
 const {

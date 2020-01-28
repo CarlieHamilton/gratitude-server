@@ -8,3 +8,10 @@ const {
     app
 } = require('../testConfig');
 chai.use(chaiHttp);
+
+const { setupMockUser, token } = require('../data/userTestMockData');
+
+describe('Authorization Routes Tests', () => {
+
+    before
+})
