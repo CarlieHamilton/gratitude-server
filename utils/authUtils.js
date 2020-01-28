@@ -1,7 +1,9 @@
-let jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+
+const expiry = '24h';
 
 const checkToken = (req, res, next) => {
-    let token = extractToken(req);
+    const token = extractToken(req);
     if (token) {
         jwt.verify(token, process.env.JWT, (err, decoded) => {
             if (err) {
@@ -22,6 +24,21 @@ const checkToken = (req, res, next) => {
     }
 }
 
+const generateToken = (user) => {
+    const token = jwt.sign(
+        {
+            username: user.username,
+            id: user._id
+        },
+        process.env.JWT,
+        {
+            subject: user._id.toString(),
+            expiresIn: expiry
+        }
+    )
+    return token
+}
+
 function extractToken (req) {
     if (req.headers.authorization && req.headers.authorization.split(" ")[0] === 'Bearer') {
         return req.headers.authorization.split(' ')[1];
@@ -32,5 +49,6 @@ function extractToken (req) {
 }
 
 module.exports = {
-    checkToken
+    checkToken,
+    generateToken
 }
