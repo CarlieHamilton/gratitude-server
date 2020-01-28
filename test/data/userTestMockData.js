@@ -25,7 +25,13 @@ const token = () => {
         })
 }
 
+// get rid of data in the database
+const userTearDownData = () => {
+    return User.deleteMany();
+}
+
 module.exports = {
     setupMockUser,
-    token
+    token,
+    userTearDownData
 }

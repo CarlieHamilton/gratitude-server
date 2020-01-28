@@ -50,5 +50,6 @@ function extractToken (req) {
 
 module.exports = {
     checkToken,
-    generateToken
+    generateToken,
+    extractToken
 }
