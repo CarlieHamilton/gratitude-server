@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const { mongooseConnect } = require('./config/mongooseConnection');
 const { login, index } = require('./controllers/authController');
 const { checkToken } = require('./utils/authUtils')
@@ -18,10 +17,8 @@ const port = process.env.PORT || 3003;
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
+app.use(express.json());
+// TODO : - delete body parser from package.json
 // Database connection
 mongooseConnect(process.env.NODE_ENV);
 

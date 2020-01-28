@@ -1,10 +1,4 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const secret = process.env.JWT;
 const jwt = require('jsonwebtoken');
-const { checkToken } = require('../utils/authUtils');
-
-
 
 const login = (req, res) => {
     let username = req.body.username;
@@ -17,7 +11,7 @@ const login = (req, res) => {
         if (username === mockedUsername && password === mockedPassword) {
             let token = jwt.sign(
                 { username: username },
-                secret,
+                process.env.JWT,
                 { expiresIn: '24h'}
             );
 

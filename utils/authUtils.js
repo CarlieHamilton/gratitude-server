@@ -1,12 +1,7 @@
 let jwt = require('jsonwebtoken');
 
 const checkToken = (req, res, next) => {
-    let token = req.headers['x-access-token'] || req.headers['authorization'];
-    if (token.startsWith('Bearer ')) {
-        // remove 'Bearer' from string
-        token = token.slice(7, token.length);
-    }
-
+    let token = extractToken(req);
     if (token) {
         jwt.verify(token, process.env.JWT, (err, decoded) => {
             if (err) {
@@ -25,6 +20,15 @@ const checkToken = (req, res, next) => {
             message: 'Auth token is not supplied'
         })
     }
+}
+
+function extractToken (req) {
+    if (req.headers.authorization && req.headers.authorization.split(" ")[0] === 'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+    } else if (req.query && req.query.token) {
+        return req.query.token;
+    }
+    return null;
 }
 
 module.exports = {
