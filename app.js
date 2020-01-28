@@ -27,7 +27,7 @@ mongooseConnect(process.env.NODE_ENV);
 // seedEntries();
 
 // Defining the routes
-app.get("/", checkToken, index);
+app.use("/", rootRouter);
 app.use("/entries", entriesRouter);
 app.post('/login', login);
 

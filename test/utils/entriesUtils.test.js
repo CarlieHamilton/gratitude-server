@@ -11,7 +11,7 @@ const Entry = require('../../models/entry');
 const {
     setupMockEntry,
     entryTearDownData
-} = require('../data/testMockData')
+} = require('../data/entryTestMockData')
 
 // defining here to give it scope
 let entryId = null;

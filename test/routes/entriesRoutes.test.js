@@ -12,7 +12,7 @@ const Entry = require("../../models/entry");
 const {
     setupMockEntry,
     entryTearDownData
-} = require('../data/testMockData');
+} = require('../data/entryTestMockData');
 
 let entryId = null;
 
