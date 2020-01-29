@@ -8,13 +8,13 @@ const { generateToken } = require('../../utils/authUtils');
 const User = require('../../models/user');
 
 // setting up a mock user for testing
-const setupMockUser = () => {
+const setupMockUser = async () => {
     const mockUser = {
         username: 'June',
         email: 'blessedBeTheFruit@gmail.com',
         password: 'praise_be'
     }
-    return User.create(mockUser);
+    return await User.create(mockUser);
 }
 
 // get the user's token

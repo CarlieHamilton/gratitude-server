@@ -9,6 +9,9 @@ const {
 } = require('../testConfig');
 chai.use(chaiHttp);
 
+
+const jwt = require('jsonwebtoken');
+
 const {
     checkToken,
     generateToken,
@@ -41,10 +44,29 @@ describe('Auth Utility Tests', () => {
 
     // check to see if there is a valid token
     describe('checkToken', () => {
-        it('should check to see if there is a valid token', () => {
+        it('should check to see if there is a valid token', async (done) => {
             // set up mock user
+            const mockedUser = await setupMockUser()
+            const username = mockedUser.username;
+            const token = jwt.sign(
+                { username: username },
+                process.env.JWT,
+                { expiresIn: '30s' }
+            );
+            const req = {
+                headers: {
+                Authorization: "Bearer " + token
+            }}
+
+            console.log(req);
+
+            const res = {};
+            const next = function(err) {console.log('lala')}
             // send the request
-            // expect what do we expect? lol
+            // const result = checkToken(req, res, next)
+            //     console.log(result)
+            //     expect(result.success).to.equal(false)
+            done();
         })
     })
 

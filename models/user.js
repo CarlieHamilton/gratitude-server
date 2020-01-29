@@ -20,8 +20,8 @@ const User = new Schema({
     },
     image: String
 }, {timestamps: true})
-
-User.pre('save', (next) => {
+    // this pre hook ensures that updated passwords are hashed before storing
+User.pre('save', function(next) {
     let user = this;
     if (!user.isModified('password')) {
         return next()
