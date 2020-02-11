@@ -58,14 +58,20 @@ describe('Auth Utility Tests', () => {
                 Authorization: "Bearer " + token
             }}
 
-            console.log(req);
+            // console.log(req);
 
-            const res = {};
-            const next = function(err) {console.log('lala')}
-            // send the request
-            // const result = checkToken(req, res, next)
-            //     console.log(result)
-            //     expect(result.success).to.equal(false)
+            // const res = {};
+            // const next = function(err) {console.log('lala')}
+            // // send the request
+            // const result = await checkToken(req, res, next)
+            //     .then(() => {
+            //         console.log(res)
+            //         expect(res.success).to.equal(false)
+            //     }
+            //     )
+            //     .catch(
+            //         console.log("error!!")
+            //     )
             done();
         })
     })
